@@ -122,10 +122,13 @@
         <div class="loginHeadWrapper">
             <img src="Images/BOB.png" style="height: 60px; width: 60px" />
             <span class="loginTitle">
-                DevOps Battle of the Brains
+                DevOps Battle of the Brains ABABABA
             </span>
         </div>
         <div class="loginBodyWrapper" style="vertical-align: central">
+
+
+
             <div class="loginFormContainer" style="display: inline-block">
                 <div class="loginFormHeader">
                     <span> <img src="Images/BOB.png" style="height: 40px; width: 40px" /> Sign in to Your Account</span>
@@ -137,12 +140,13 @@
                         </span>
                         <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control" placeholder="Enterprise ID" ClientIDMode="Static" />
                     </div>
-                    <div class="input-group" style="margin-bottom: 10px">
+<%--                    <div class="input-group" style="margin-bottom: 10px">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Password" ClientIDMode="Static"  />
-                    </div>            
+                    </div>  --%>          
                     <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary btnLogin" Text="Sign In" OnClick="btnLogin_Click" OnClientClick="return validateCheck()" /><br /> 
                     <asp:Button ID="btnForgot" runat="server" CssClass="btn btn-info btnForgot" Text="Can&rsquo;t Remember Password" OnClick="btnForgot_Click" />
+                    <asp:Button ID="btnRegister" runat="server" CssClass="btn btn-info btnForgot" Text="Register Now" OnClick="btnRegister_Click" />
                     </form>
                 </div>
             </div>
@@ -152,7 +156,7 @@
         </div>
     </div>
 
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         var prm = new Sys.WebForms.PageRequestManager.getInstance();
         prm.add_initializeRequest(initializer);
         prm.add_endRequest(ender);
@@ -196,7 +200,7 @@
 
 
 
-    </script>
+    </script>--%>
 
 </body>
 

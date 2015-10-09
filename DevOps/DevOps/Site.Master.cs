@@ -78,58 +78,9 @@ namespace DevOps
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SBObj _sbobj = new SBObj();
-            Session["errMSG"] = "";
-            try
-            {
-                if (Session["errMSG"].ToString().Equals(string.Empty))
-                {
 
-                    DataTable dt = new DataTable();
-                    dt = _sbobj.getLoginDetails((string)Session["lanid"]).Tables[0];
-                    if (dt.Rows.Count < 1)
-                    {
-
-                            Session["errMSG"] = "You are not authorized to use this tool.";
-                            Response.Redirect("About.aspx");
-
-
-                    }
-                    else
-                    {
-                        DataSet ds = new DataSet();
-                        ds = _sbobj.getLoginDetails((string)Session["lanid"]);
-
-                        foreach (DataRow drow in ds.Tables[0].Rows)
-                        {
-                            lblEid.Text = drow["EID"].ToString();
-                            lblType.Text = drow["AccessLevel"].ToString();
-                            Session["UAL"] = lblType.Text; 
-                            //(string)Session["UAL"] = lblType.Text();
-                            //lblName.Text = drow["FirstName"].ToString() + ' ' + drow["LastName"].ToString();
-                            //lblposition.Text = "Team Leader";
-                            //Session["WDID"] = drow["WorkdayID"].ToString();
-                            //Session["FLN"] = drow["FirstName"].ToString() + ' ' + drow["LastName"].ToString();
-
-
-                        }
-                        //TodoMgmt.Visible = false;
-                    }
-
-                }
-
-                else
-                {
-                    lblEid.Text = "0";
-                    //lblName.Text = "Err";
-                }
-            }
-            catch (Exception)
-            {
-                Response.Redirect("~/Default.aspx");
-                throw;
-            }
-
+            lblType.Text = (string)Session["Type"];
+            lblEid.Text = (string)Session["lanid"];
 
         }
 

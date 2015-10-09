@@ -32,8 +32,8 @@
 }
 
 .btn-success {
-    background-color:#284E36;
-    border-color:#284E36;
+    background-color:rgba(230, 126, 34,1.0);
+    border-color:rgba(230, 126, 34,1.0);
 }
 
 .command-panel {

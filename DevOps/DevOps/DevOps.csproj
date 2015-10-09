@@ -109,6 +109,8 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="AdminPanel\Activitymgmt.aspx" />
+    <Content Include="AdminPanel\Adminmgmt.aspx" />
     <Content Include="Admin\ScriptBee\Questionaires.aspx" />
     <Content Include="bin\AspNet.ScriptManager.jQuery.dll" />
     <Content Include="bin\AspNet.ScriptManager.jQuery.UI.Combined.dll" />
@@ -232,7 +234,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="Default.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\BOB.png" />
     <Content Include="Images\building.jpg" />
@@ -249,6 +250,7 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
+    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
@@ -351,6 +353,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminPanel\Activitymgmt.aspx.cs">
+      <DependentUpon>Activitymgmt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Activitymgmt.aspx.designer.cs">
+      <DependentUpon>Activitymgmt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\Adminmgmt.aspx.cs">
+      <DependentUpon>Adminmgmt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Adminmgmt.aspx.designer.cs">
+      <DependentUpon>Adminmgmt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\ScriptBee\Questionaires.aspx.cs">
       <DependentUpon>Questionaires.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

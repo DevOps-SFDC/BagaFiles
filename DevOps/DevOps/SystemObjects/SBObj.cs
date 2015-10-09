@@ -14,8 +14,9 @@ namespace DevOps.SystemObjects
 
 
         #region Declaration
-        private string _question, _answer, _difficulty, _status, _eid, _guestanswer;
-        private int _questionid, _questionid1;
+        private string _question, _answer, _difficulty, _status, _eid, _guestanswer, _capability, _project, _type, _title, _description;
+        private int _questionid, _userno;
+        private DateTime? _date;
         #endregion
 
         #region Properties
@@ -23,6 +24,8 @@ namespace DevOps.SystemObjects
         #region INT
         public Int32 QuestionID
         { set { _questionid = value; } }
+        public Int32 UserNo
+        { set { _userno = value; } }
         #endregion
 
         #region STRING
@@ -38,6 +41,21 @@ namespace DevOps.SystemObjects
         { set { _eid = value; } }
         public String GuestAnswer
         { set { _guestanswer = value; } }
+        public String Capability
+        { set { _capability = value; } }
+        public String Project
+        { set { _project = value; } }
+        public String Type
+        { set { _type = value; } }
+        public String Title
+        { set { _title = value; } }
+        public String Description
+        { set { _description = value; } }
+        #endregion
+
+        #region DATE
+        public DateTime? Date
+        { set { _date = value; } }
         #endregion
 
         #endregion
@@ -159,10 +177,10 @@ namespace DevOps.SystemObjects
         public DataSet getLoginDetails(string lanid)
         {
             DataSet ds = new DataSet();
-            lanid = lanid.Remove(0, lanid.IndexOf('\\') + 1);
+            //lanid = lanid.Remove(0, lanid.IndexOf('\\') + 1);
             var oParam = new SqlCommand().Parameters;
             oParam.AddWithValue("@eid", lanid);
-            return ds = _dbi.FGetDataSet(@"SBGetUser", oParam);
+            return ds = _dbi.FGetDataSet(@"TBGetLoginDetails", oParam);
         }
 
         public DataTable DisplayQuestionairesModalD()
@@ -286,6 +304,87 @@ namespace DevOps.SystemObjects
             {
                 this.ExecuteInsert(@"SBRecycleA", oParam);
                 msg = "Updated!";
+            }
+            catch (Exception ex)
+            {
+                msg = ex.ToString();
+            }
+
+            return msg;
+        }
+
+        public string AddAdmin()
+        {
+            string msg;
+            var oParam = new SqlCommand().Parameters;
+            oParam.AddWithValue("@eid", _eid);
+            oParam.AddWithValue("@capability", _capability);
+            oParam.AddWithValue("@project", _project);
+            try
+            {
+                this.ExecuteInsert(@"TBInsertAdmin", oParam);
+                msg = "Saved!";
+            }
+            catch (Exception ex)
+            {
+                msg = ex.ToString();
+            }
+
+            return msg;
+        }
+        public DataTable DisplayUsers()
+        {
+            DataTable dt = new DataTable();
+            var oParam = new SqlCommand().Parameters;
+            return dt = this.FGetDataTable(@"SBGetUser", oParam);
+        }
+        public DataTable DisplayMakeAdmin()
+        {
+            DataTable dt = new DataTable();
+            var oParam = new SqlCommand().Parameters;
+            oParam.AddWithValue("@userno", _userno);
+            return dt = this.FGetDataTable(@"SBDisplayUserInfo", oParam);
+        }
+        public string UpdateAdmin()
+        {
+            string msg;
+            var oParam = new SqlCommand().Parameters;
+            oParam.AddWithValue("@userno", _userno);
+            oParam.AddWithValue("@eid", _eid);
+            oParam.AddWithValue("@capability", _capability);
+            oParam.AddWithValue("@project", _project);
+            oParam.AddWithValue("@type", _type);
+            try
+            {
+                this.ExecuteInsert(@"SBUpdateUser", oParam);
+                msg = "Updated!";
+            }
+            catch (Exception ex)
+            {
+                msg = ex.ToString();
+            }
+
+            return msg;
+        }
+
+        public DataTable DisplayActivity()
+        {
+            DataTable dt = new DataTable();
+            var oParam = new SqlCommand().Parameters;
+            return dt = this.FGetDataTable(@"SBDisplayActivity", oParam);
+        }
+
+        public string AddActivity()
+        {
+            string msg;
+            var oParam = new SqlCommand().Parameters;
+            oParam.AddWithValue("@title", _title);
+            oParam.AddWithValue("@description", _description);
+            oParam.AddWithValue("@date", _date);
+            try
+            {
+                this.ExecuteInsert(@"SBInsertActivity", oParam);
+                msg = "Saved!";
             }
             catch (Exception ex)
             {

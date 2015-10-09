@@ -2,46 +2,132 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
      <script src="<%: ResolveUrl("~/Scripts/timepicker.js") %>"></script>
     <style>
+        .qbdiff {
+            width: 200px;
+        }
+        .questionContainer {
+            border: 0px;
+            border-radius: 0;
+            background: rgba(37, 116, 169, 1);
+            box-shadow: rgba(0, 0, 0, 0.40) 2px 2px 2px;
+            color: #FFF;
+            padding: 0;
+            width: 60%
+        }
 
+                /* entire container, keeps perspective */
+        .flip-container {
+	        perspective: 1000;
+	        transform-style: preserve-3d;
+        }
+	        /*  UPDATED! flip the pane when hovered */
+	        .flip-container:hover .back {
+		        transform: rotateX(0deg);
+	        }
+	        .flip-container:hover .front {
+	            transform: rotateX(180deg);
+	        }
+
+        .flip-container, .front, .back {
+	        width: 100px;
+	        height: 50px;
+        }
+
+        /* flip speed goes here */
+        .flipper {
+	        transition: 0.6s;
+	        transform-style: preserve-3d;
+
+	        position: relative;
+        }
+
+        /* hide back of pane during swap */
+        .front, .back {
+	        backface-visibility: hidden;
+	        transition: 0.6s;
+	        transform-style: preserve-3d;
+
+	        position: absolute;
+	        top: 0;
+	        left: 0;
+        }
+
+        /* front pane, placed above back */
+        .front {
+	        z-index: 2;
+	        transform: rotateX(0deg);
+        }
+
+        /* back, initially hidden pane */
+        .back {
+	        transform: rotateX(-180deg);
+        }
+
+        /* 
+	        Some vertical flip updates 
+        */
+        .vertical.flip-container {
+	        position: relative;
+        }
+
+	    .vertical .back {
+		    transform: rotateY(180deg);
+	    }
+
+	    .vertical.flip-container:hover .back {
+	        transform: rotateY(0deg);
+	    }
+
+	    .vertical.flip-container:hover .front {
+	        transform: rotateY(180deg);
+	    }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <div id="page-wrapper" style="padding-top: 3%">
+    <div id="page-wrapper" style="padding-top: 4%">
 
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header"><i class="fa fa-cubes fa-fw"></i>Script Bee</h1>
-            </div>
-        </div>
-        <label class="text-center pull-right" id="timer" style="font:bold 16px arial, verdana;">  2:00</label><label class="text-center pull-right">Countdown:</label>
+        <div class="row" style="margin-top: 15px; "></div>
+
+        <!--<div class="flip-container">
+	        <div class="flipper">
+		        <div class="front">FRONT
+		        </div>
+		        <div class="back">
+		        </div>
+	        </div>
+        </div>-->
+
+        <label class="text-center pull-right" id="timer" style="font:bold 16px arial, verdana;">  2:00</label><label class="text-center pull-right">Countdown:&nbsp;</label>
         
         <div class="row">
              <div class="col-lg-12">
             </div>
         </div>
 
-        <div id="questionform" class="panel panel-body well well-lg">
-            <div class="col-xs-12">
-                <div class="col-md-12">
-                   <h1> Live Session</h1>
+        <div id="questionform" class="panel panel-body well well-lg questionContainer">
+            <!--<div class="col-xs-12 qbtopline" style="background: rgba(241, 196, 15,1.0); padding: 0px; height: 10px"></div>-->
+            <div class="col-xs-12" style="padding: 0px; box-shadow: rgba(0, 0, 0, 0.30) 0px 1px 1px; display:inline-block;">
+                <div class="col-md-12" style="background: rgba(44, 62, 80,1.0); color: #FFF; font-family: 'Open Sans',serif; padding-bottom: 15px; width: 100%">
+                   <h1 style="display: inline-block"><i class="fa fa-pencil"></i> Online Quiz Bee</h1>
+                   <div class="qbbtn" style="float: right; margin-top: 15px; width: 90px; height: 50px; text-align: center">
+                     <button type="button" class="btn btn-success qbbtnsubmit" id="guestsubmit" style="height: 50px; width: 90px"><span class="qbbtnsubmittxt">Submit</span></button>
+                   </div>
                 </div>
             </div>
             <input type="hidden" id="questionid" />
             <%--<input type="hidden" id="correctanswer"/>--%>
 
-            <div class="col-xs-12">
-                <div class="col-md-3">
-                </div>
-                <div class="col-md-3">
+            <div class="col-xs-12" style="margin-top: 10px;">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label>Difficulty :</label>
-                        <input type="text" id="difficulty" class="form-control" placeholder="Difficulty" readonly />                        
+                        <input type="text" id="difficulty" class="form-control qbdiff" placeholder="Difficulty" readonly />                        
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label>Points :</label>
                         <input type="text" id="points" class="form-control" placeholder="Points" readonly />
@@ -50,14 +136,11 @@
 
             </div>
             <div class="col-xs-12">
-                <div class="col-md-3">
-                </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group">
-                        <%--<input type="hidden" id="questionid" />--%>
-                        
+                        <%--<input type="hidden" id="questionid" />--%>     
                         <label>Question :</label>
-                        <textarea id="question" rows="6" placeholder="What is your Question?" class="form-control" readonly></textarea>
+                        <textarea style="resize: none" id="question" rows="6" placeholder="Are you ready to answer?" class="form-control" readonly></textarea>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -71,23 +154,11 @@
                 </div>
             </div>
 
-
-
             <div class="col-xs-12">
-
-                <div class="col-md-3">
-
+                <div class="col-md-12">
+                    <textarea style="resize: none; height: 150px; margin-bottom: 20px" class="form-control" id="guestanswer" rows="5" placeholder="What is the answer?"></textarea>
                 </div>
-
-                <div class="col-md-5">
-                    <textarea class="form-control" id="guestanswer" rows="5" placeholder="Place your Answer here !.."></textarea>
-                </div>
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-success" id="guestsubmit">Submit</button>
-                </div>
-
             </div>
-
 
             <span id="ErrorDiv" class="Framework_Error_Message_Span"></span>
         </div>
@@ -110,9 +181,30 @@
         }
         function loader(sender, args) {
             $(document).ready(function () {
-
-
-                if ('<%: Session["UAL"]%>' == 'Administrator') {
+                var val = '';
+                $('#guestanswer').on("keyup", function () {
+                    console.log($('#guestanswer').val());
+                    if ($('#guestanswer').val() == '\n')
+                        console.log("ENTERED");
+                });
+                /*$('.qbbtnsubmit').hover(function () {
+                    $('.qbbtnsubmittxt').remove();
+                    $('.qbbtnsubmit').animate({ borderRadius: '50%', width: '50px' }, "fast");
+                    $('.qbbtnsubmit').append('<i class="fa fa-check fa-2x qbbtnsubmittxt"></i>');
+                }, function () {
+                    $('.qbbtnsubmittxt').remove();
+                    $('.qbbtnsubmit').animate({ borderRadius: '4px', width: '90px' }, "fast");
+                    $('.qbbtnsubmit').append('<span class="qbbtnsubmittxt">Submit</span>');
+                });
+                */
+                $('.qbbtn').hover(function () {
+                    $('.qbbtnsubmit').remove();
+                    $('.qbbtn').append('<button type="button" class="btn btn-success qbbtnsubmit" id="guestsubmit" style="border-radius: 50%; height: 50px; width: 50px"><i class="fa fa-check fa-2x qbbtnsubmittxt"></i></button>');
+                }, function () {
+                    $('.qbbtnsubmit').remove();
+                    $('.qbbtn').append('<button type="button" class="btn btn-success qbbtnsubmit" id="guestsubmit" style="height: 50px; width: 90px"><span class="qbbtnsubmittxt">Submit</span></button>');
+                });
+<%--                if ('<%: Session["UAL"]%>' == 'Administrator') {
                     alert('You are not Authorized to use this Tool!..');
                     window.location.href = "/Default.aspx";
                 }
@@ -121,7 +213,7 @@
                     refreshquestionform();
                     setInterval(LoadQuestdummyid, 500);
                     setInterval(CheckdbAnswered, 500);
-                }
+                }--%>
             })
         }
 
@@ -224,7 +316,6 @@
             }
             else {
                 timerstart();
-
             }
         }
 
@@ -261,6 +352,7 @@
             clearInterval(timer);
             
         };
+
 
         //Update the Questionaires to database if not Answered
         function UpdateQuestionaireNotAnswered() {

@@ -27,7 +27,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div id="page-wrapper">
+    <div id="page-wrapper" style="padding-top: 3%">
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header"><i class="fa fa-cubes fa-fw"></i>Question Management</h1>

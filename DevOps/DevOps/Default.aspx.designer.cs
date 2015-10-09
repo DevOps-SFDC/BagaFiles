@@ -22,22 +22,22 @@ namespace DevOps {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// Name1 control.
+        /// Text9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Name1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text9;
         
         /// <summary>
-        /// Score1 control.
+        /// Text11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Score1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text11;
         
         /// <summary>
         /// Panel2 control.
@@ -49,22 +49,22 @@ namespace DevOps {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// Name2 control.
+        /// Text1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Name2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
         
         /// <summary>
-        /// Score2 control.
+        /// Text3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Score2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text3;
         
         /// <summary>
         /// Panel3 control.
@@ -76,21 +76,21 @@ namespace DevOps {
         protected global::System.Web.UI.WebControls.Panel Panel3;
         
         /// <summary>
-        /// Name3 control.
+        /// Text4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Name3;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text4;
         
         /// <summary>
-        /// Score3 control.
+        /// Text6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Score3;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text6;
     }
 }
