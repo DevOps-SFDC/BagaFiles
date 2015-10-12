@@ -71,247 +71,154 @@
     </style>
 
 </asp:Content>
-<%--<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h3>We suggest the following:</h3>
-    <ol class="round">
-        <li class="one">
-            <h5>Getting Started</h5>
-            ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245146">Learn more…</a>
-        </li>
-        <li class="two">
-            <h5>Add NuGet packages and jump-start your coding</h5>
-            NuGet makes it easy to install and update free libraries and tools.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245147">Learn more…</a>
-        </li>
-        <li class="three">
-            <h5>Find Web Hosting</h5>
-            You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245143">Learn more…</a>
-        </li>
-    </ol>
 
-    <script type="text/javascript">
-
-    </script>
-</asp:Content>--%>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><i class="fa fa-cubes fa-fw"></i>Dash Board</h1>
+                <h1 class="page-header"><i class="fa fa-cubes fa-fw" style="padding-top: 5%"></i>Dash Board</h1>
             </div>
         </div>
         <br />
-        <div class="container">
-            <div class="column column-one">
-                <br />
-                <br />
-                <br />
-                <br />
-                <div class="container1">
+
+        <div class="row">
+            <div class="col-lg-12">
+                  
+                <div class="col-md-3">
+                    <h2 class="page-header" style="padding-top: 50%">--------Top 2--------</h2>
                     <img src="Images/icon1.png" alt="icon1" style="width: 180px; height: 180px; align-content: center;">
-                </div>
-
-                <div>
                     <br />
-                    <asp:Panel ID="Panel1" runat="server">
-                        <label>
-                            <span>Name :</span>
-                            <input type="text" id="Text9" runat="server" />
-                        </label>
-                        <br />
-                        <label>
-                            <span>Score : </span>
-                            <input type="text" id="Text11" runat="server" />
-                        </label>
-                    </asp:Panel>
+                    <span id="txttp2n">Top 2 Name</span>
+                    <br />
+                    <span id="txttp2s">Top 2 Score</span>
                 </div>
-            </div>
-
-            <div class="column column-two">
-
-
-                <div class="container1">
+                <div class="col-md-3">
+                    <h2 class="page-header">--------Top 1--------</h2>
                     <img src="Images/icon1.png" alt="icon1" style="width: 180px; height: 180px; align-content: center;">
-                </div>
-
-                <div>
                     <br />
-                    <asp:Panel ID="Panel2" runat="server">
-                        <label>
-                            <span>Name :</span>
-                            <input type="text" id="Text1" runat="server" />
-                        </label>
-                        <br />
-                        <label>
-                            <span>Score : </span>
-                            <input type="text" id="Text3" runat="server" />
-                        </label>
-                    </asp:Panel>
+                    <span id="txttp1n">Top 1 Name</span>
+                    <br />
+                    <span id="txttp1s">Top 1 Score</span>
                 </div>
-
-            </div>
-
-            <div class="column column-three">
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-
-                <div class="container1">
+                <div class="col-md-3">
+                    <h2 class="page-header" style="padding-top: 50%">--------Top 3--------</h2>
                     <img src="Images/icon1.png" alt="icon1" style="width: 180px; height: 180px; align-content: center;">
+                    <br />
+                    <span id="txttp3n">Top 3 Name</span>
+                    <br />
+                    <span id="txttp3s">Top 3 Score</span>
                 </div>
 
-                <div>
-                    <br />
-                    <asp:Panel ID="Panel3" runat="server">
-                        <label>
-                            <span>Name :</span>
-                            <input type="text" id="Text4" runat="server" />
-                        </label>
-                        <br />
-                        <label>
-                            <span>Score : </span>
-                            <input type="text" id="Text6" runat="server" />
-                        </label>
-                    </asp:Panel>
+                <div class="col-md-3">
+                    <div class="chat-panel panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i>
+                            Chat Global
+
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <ul class="chat">
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i>12 mins ago
+                                            </small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i>13 mins ago</small>
+                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i>14 mins ago</small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i>15 mins ago</small>
+                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                        <div class="panel-footer">
+                            <div class="input-group">
+                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="btn-chat">
+                                        Send
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- /.panel-footer -->
+                    </div>
                 </div>
             </div>
         </div>
-        <%--  <div class="row">
-             <div class="col-lg-12">
-                <br />
-                <button id="addquestionaire" type="button" class="btn btn-success pull-right"><i class="fa fa-plus fa-fw"></i> Add Question</button>
-                <div class="clearfix"></div>
-            </div>
-        </div>--%>
 
-        <%--        <div id="questionform" class="panel panel-body" style="display: none;">
-            <div class="panel-body">
-            </div>
-            <div class="col-xs-12">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Question :</label>
-                        <textarea id="question" cols="100" rows="3" placeholder="What is your Question?" class="form-control"></textarea>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <input type="text" class="form-control" id="datetimepicker"/> 
+<%--                <div class="well">
+                    <div id="datetimepicker1" class="input-append date">
+                        <input data-format="dd/MM/yyyy hh:mm:ss" type="text" />
+                        <span class="add-on">
+                            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                        </span>
                     </div>
-                    <div class="clearfix"></div>
-                </div>
+                </div>--%>
             </div>
-
-            <div class="col-xs-12">
-
-                <div class="col-xs-3">
-                    <div class="form-group">
-                        <label>Answer :</label>
-                        <input type="text" id="answer" class="form-control" placeholder="Your Answer.." />
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="col-xs-3">
-                    <div class="form-group">
-                        <label>Difficulty :</label>
-                        <select id="difficulty" class="form-control">
-                            <option value="0">Select a Difficulty..</option>
-                            <option value="Easy">Easy</option>
-                            <option value="Average">Average</option>
-                            <option value="Hard">Hard</option>
-                            <option value="Extra">Extra</option>
-                        </select>
-                    </div>
-                </div>
-
-            </div>
+        </div>
 
 
-            <span id="ErrorDiv" class="Framework_Error_Message_Span"></span>
-            <div class="pull-right">
-                <button id="canceladdquestion" type="button" class="btn btn-success"><i class="fa fa-close fa-fw"></i>Cancel</button>
-                <button id="addquestion" type="button" class="btn btn-success"><i class="fa fa-save fa-fw"></i>Add Question</button>
-            </div>
-        </div>--%>
 
-        <%-- <div class="panel panel-body" id="questiondetails">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="col-md-12">
-                        <div class="table-responsive">
-                            <table id="gridQuestiondetails" class="table table-bordered dataTable">
-                                <thead>
-                                    <tr>
-                                        <th>Question ID</th>
-                                        <th>Question</th>
-                                        <th>Answer</th>
-                                        <th>Diffuculty</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-        </div>--%>
-
-        <%--        <div class="modal fade" id="timeinuserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h2 class="modal-title" id="myModalLabel">Update Questionaires</h2>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <input type="hidden" id="txtquestionid" />
-                            <div class="col-lg-12">
-                                <div class="col-md-12">
-                                    <label>Question :</label>
-                                    <textarea id="txtquestion" cols="100" rows="3" placeholder="What are your Question?" class="form-control"></textarea>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="col-md-6">
-                                    <label>Answer :</label>
-                                    <input type="text" id="txtanswer" class="form-control" />
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                                <div class="col-md-4">
-                                    <label>Difficulty :</label>
-                                    <select id="txtdifficulty" class="form-control">
-                                        <option value="0">Select a Difficulty...</option>
-                                        <option value="Easy">Easy</option>
-                                        <option value="Average">Average</option>
-                                        <option value="Hard">Hard</option>
-                                        <option value="Extra">Extra</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-
-                    </div>
-
-                    <div class="modal-footer">
-                        <button id="closemodal" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button id="btnupdate" type="button" class="btn btn-success">Update</button>
-                    </div>
-                </div>
-            </div>
-        </div>--%>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header"><i class="fa fa-cubes fa-fw"></i>Activities</h1>
@@ -558,123 +465,7 @@
                 </div>
                 <!-- /.panel -->
                 <!-- /.panel -->
-                <div class="chat-panel panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-comments fa-fw"></i>
-                        Chat
-                            <div class="btn-group pull-right">
-                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-chevron-down"></i>
-                                </button>
-                                <ul class="dropdown-menu slidedown">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-refresh fa-fw"></i>Refresh
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-check-circle fa-fw"></i>Available
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-times fa-fw"></i>Busy
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-clock-o fa-fw"></i>Away
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-sign-out fa-fw"></i>Sign Out
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                    </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <ul class="chat">
-                            <li class="left clearfix">
-                                <span class="chat-img pull-left">
-                                    <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
-                                </span>
-                                <div class="chat-body clearfix">
-                                    <div class="header">
-                                        <strong class="primary-font">Jack Sparrow</strong>
-                                        <small class="pull-right text-muted">
-                                            <i class="fa fa-clock-o fa-fw"></i>12 mins ago
-                                        </small>
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="right clearfix">
-                                <span class="chat-img pull-right">
-                                    <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle">
-                                </span>
-                                <div class="chat-body clearfix">
-                                    <div class="header">
-                                        <small class=" text-muted">
-                                            <i class="fa fa-clock-o fa-fw"></i>13 mins ago</small>
-                                        <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="left clearfix">
-                                <span class="chat-img pull-left">
-                                    <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
-                                </span>
-                                <div class="chat-body clearfix">
-                                    <div class="header">
-                                        <strong class="primary-font">Jack Sparrow</strong>
-                                        <small class="pull-right text-muted">
-                                            <i class="fa fa-clock-o fa-fw"></i>14 mins ago</small>
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="right clearfix">
-                                <span class="chat-img pull-right">
-                                    <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle">
-                                </span>
-                                <div class="chat-body clearfix">
-                                    <div class="header">
-                                        <small class=" text-muted">
-                                            <i class="fa fa-clock-o fa-fw"></i>15 mins ago</small>
-                                        <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.panel-body -->
-                    <div class="panel-footer">
-                        <div class="input-group">
-                            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-warning btn-sm" id="btn-chat">
-                                    Send
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                    <!-- /.panel-footer -->
-                </div>
+
                 <!-- /.panel .chat-panel -->
             </div>
 
@@ -682,9 +473,7 @@
 
         </div>
     </div>
-</asp:Content>
-
-<%--    <script type="text/javascript">
+    <script type="text/javascript">
         var prm = new Sys.WebForms.PageRequestManager.getInstance();
         prm.add_initializeRequest(initializer);
         prm.add_endRequest(ender);
@@ -699,111 +488,24 @@
         }
         function loader(sender, args) {
             $(document).ready(function () {
-                DisplayQuestionaires();
-
+                LoadTopScorers();
             })
         }
-        $('#addquestionaire').click(function () {
-            $('#questionform').slideDown('slow');
-            $('#questiondetails').slideUp('slow');
-        })
-        $('#canceladdquestion').click(function () {
-            $('#questionform').slideUp('slow');
-            $('#questiondetails').slideDown('slow');
-            refreshquestionform();
-        })
-        $('#addquestion').click(function () {
-            alert1();
-        })
-
-        function refreshquestionform() {
-            $('#question').val('');
-            $('#answer').val('');
-            $('#difficulty').val(0);
-
+        function LoadTopScorers() {
+            LoadTop1('0');
+            LoadTop2('0');
+            LoadTop3('0');
+            $("#datetimepicker").click();
         }
 
+        $('#datetimepicker').datepicker({
 
-        function DisplayQuestionaires() {
-            $('#gridQuestiondetails > tbody > tr').remove();
-
-
-            var arr = new Array();
+        });
+        function LoadTop1(userno) {
             $.ajax({
                 type: "POST",
-                url: "Questionaire.aspx/displayQuestionaires",
-                data: JSON.stringify({ _arr: arr }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function AjaxSucceeded(response) {
-                    var xmlDoc = $.parseXML(response.d);
-                    var xml = $(xmlDoc);
-                    var ctm = xml.find("Table1");
-                    $.each(ctm, function () {
-                        var ctm = $(this);
-                        var row = '<tr></tr>';
-                        var col = '<td>';
-
-                        col += $(this).find("QuestionID").text() + '</td> <td>';
-                        col += $(this).find("Question").text() + '</td> <td>';
-                        col += $(this).find("Answer").text() + '</td> <td>';
-                        col += $(this).find("Difficulty").text() + '</td> <td>';
-                        col += $(this).find("Status").text() + '</td> <td>';
-                        col += '<input id="questionid" type="hidden" value="' + $(this).find("QuestionID").text() + '"/> <a id="questionedit" class="questionedit" data-toggle="modal" data-target="#timeinuserModal" href="#"><i class="fa fa-edit fa-fw"></i> Edit</a> </td>';
-
-                        $("[id*=gridQuestiondetails] tbody").append($(row).append(col));
-                    })
-                    $('.questionedit').click(function () {
-                        DisplayQuestionairesModal($(this).prev().val());
-                    });
-                    $('#gridQuestiondetails').dataTable();
-
-
-                },
-                error: function AjaxError(response) { alert(response.status + ' ' + response.statusText); },
-                failure: function AjaxFailure(response) { alert(response.status + ' ' + response.statusText); }
-            });
-        }
-
-
-        function AddQuestionaire() {
-            var arr = new Array();
-            arr[0] = $('#question').val();
-            arr[1] = $('#answer').val();
-            arr[2] = $('#difficulty').val();
-
-            $.ajax({
-                type: "POST",
-                url: "Questionaire.aspx/addQuestionaire",
-                data: JSON.stringify({ _arr: arr }),
-                contentType: "application/json; charset=utf-8",
-                dataTaype: "json",
-                success: AjaxSucceeded,
-                error: AjaxError,
-                failure: AjaxFailure
-            });
-
-            function AjaxSucceeded(response) {
-                $('#questionform').slideUp('slow');
-                DisplayQuestionaires();
-                $('#questiondetails').slideDown('slow');
-                refreshquestionform();
-                alert('Saved! ');
-            }
-            function AjaxError(response) {
-                alert(response.status + ' ' + response.statusText);
-            }
-            function AjaxFailure(response) {
-                alert(response.status + ' ' + response.statusText);
-            }
-        }
-
-
-        function DisplayQuestionairesModal(questid) {
-            $.ajax({
-                type: "POST",
-                url: "Questionaire.aspx/displayQuestionairesModal",
-                data: '{questid: ' + questid + '}',
+                url: "Default.aspx/loadTop1",
+                data: '{userno: ' + userno + '}',
                 contentType: "application/json; charset=utf-8",
                 dataTaype: "json",
                 success: AjaxSucceeded,
@@ -816,24 +518,83 @@
                 var exkeys = xml.find("Table1");
                 $.each(exkeys, function () {
 
-                    $('#txtquestionid').val($(this).find("QuestionID").text());
-                    $('#txtquestion').val($(this).find("Question").text());
-                    $('#txtanswer').val($(this).find("Answer").text());
-                    $('#txtdifficulty').val($(this).find("Difficulty").text());
+                    $('#txttp1n').val($(this).find("EID").text());
+                    $('#txttp1n').text($(this).find("EID").text());
+                    $('#txttp1s').val($(this).find("Points").text());
+                    $('#txttp1s').text($(this).find("Points").text());
                 });
             }
             function AjaxError(response) {
-                alert(response.status + ' ' + response.statusText);
+                //alert(response.status + ' ' + response.statusText);
             }
             function AjaxFailure(response) {
-                alert(response.status + ' ' + response.statusText);
+                //alert(response.status + ' ' + response.statusText);
             }
         }
 
+        function LoadTop2(userno) {
+            $.ajax({
+                type: "POST",
+                url: "Default.aspx/loadTop2",
+                data: '{userno: ' + userno + '}',
+                contentType: "application/json; charset=utf-8",
+                dataTaype: "json",
+                success: AjaxSucceeded,
+                error: AjaxError,
+                failure: AjaxFailure
+            });
+            function AjaxSucceeded(response) {
+                var xmlDoc = $.parseXML(response.d);
+                var xml = $(xmlDoc);
+                var exkeys = xml.find("Table1");
+                $.each(exkeys, function () {
 
-        function alert1() {
-            alert('1');
+                    $('#txttp2n').val($(this).find("EID").text());
+                    $('#txttp2n').text($(this).find("EID").text());
+                    $('#txttp2s').val($(this).find("Points").text());
+                    $('#txttp2s').text($(this).find("Points").text());
+                });
+            }
+            function AjaxError(response) {
+                //alert(response.status + ' ' + response.statusText);
+            }
+            function AjaxFailure(response) {
+                //alert(response.status + ' ' + response.statusText);
+            }
         }
 
+        function LoadTop3(userno) {
+            $.ajax({
+                type: "POST",
+                url: "Default.aspx/loadTop3",
+                data: '{userno: ' + userno + '}',
+                contentType: "application/json; charset=utf-8",
+                dataTaype: "json",
+                success: AjaxSucceeded,
+                error: AjaxError,
+                failure: AjaxFailure
+            });
+            function AjaxSucceeded(response) {
+                var xmlDoc = $.parseXML(response.d);
+                var xml = $(xmlDoc);
+                var exkeys = xml.find("Table1");
+                $.each(exkeys, function () {
 
-    </script>--%>
+                    $('#txttp3n').val($(this).find("EID").text());
+                    $('#txttp3n').text($(this).find("EID").text());
+                    $('#txttp3s').val($(this).find("Points").text());
+                    $('#txttp3s').text($(this).find("Points").text());
+                });
+            }
+            function AjaxError(response) {
+                //alert(response.status + ' ' + response.statusText);
+            }
+            function AjaxFailure(response) {
+                //alert(response.status + ' ' + response.statusText);
+            }
+        }
+
+    </script>
+
+</asp:Content>
+

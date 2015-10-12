@@ -237,9 +237,16 @@
                 $('#QuestionLauncher').show();
                 $('#BattleoftheBrains').hide()
             }
+            else if ('<%: Session["Type"]%>' == '') {
+                alert('You are not Authorized to use this Tool!..');
+                window.location.href = "/Login.aspx";
+            }
+            else if ('<%: Session["lanid"]%>' == '') {
+                alert('You are not Authorized to use this Tool!..');
+                window.location.href = "/Login.aspx";
+            }
             
-            //alert('<%: Session["UAL"]%>');
-            //alert('<%: Session["AccessLevel"] %>');
+
             var currentUrl = top.location.pathname;
             var dirPathCon = currentUrl.split("/");
             var dirPath = dirPathCon[dirPathCon.length - 1];

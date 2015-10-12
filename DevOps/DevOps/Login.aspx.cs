@@ -12,6 +12,8 @@ using System.Web.UI.WebControls.WebParts;
 using System.Runtime.InteropServices;
 using System.Web.Script.Services;
 using DevOps.SystemObjects;
+using System.Collections.Generic;
+using System.Web.Services;
 
 namespace DevOps
 {
@@ -98,61 +100,74 @@ namespace DevOps
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+
             SBObj _sbobj = new SBObj();
             Session["errMSG"] = "";
             Session["lanid"] = txtUserName.Text;
-            try
+            if (txtUserName.Text == "")
             {
-                if (Session["errMSG"].ToString().Equals(string.Empty))
+                Session["errMSG"] = "Invalid EID";
+                malingmensahe.ForeColor = System.Drawing.Color.Red;
+                malingmensahe.Text = "Invalid EID";
+            }
+            else
+            {
+                try
                 {
-
-                    DataTable dt = new DataTable();
-                    dt = _sbobj.getLoginDetails((string)Session["lanid"]).Tables[0];
-                    if (dt.Rows.Count < 1)
+                    if (Session["errMSG"].ToString().Equals(string.Empty))
                     {
 
-                        Session["errMSG"] = "Something Went Wrong";
-                        Response.Redirect("About.aspx");
-
-
-                    }
-                    else
-                    {
-                        DataSet ds = new DataSet();
-                        ds = _sbobj.getLoginDetails((string)Session["lanid"]);
-
-                        foreach (DataRow drow in ds.Tables[0].Rows)
+                        DataTable dt = new DataTable();
+                        dt = _sbobj.getLoginDetails((string)Session["lanid"]).Tables[0];
+                        if (dt.Rows.Count < 1)
                         {
-                            Session["Type"] = drow["Type"].ToString();
-                            Session["lanid"] = drow["EID"].ToString();
-                            Response.Redirect("~/Default.aspx");
-                            //lblEid.Text = drow["EID"].ToString();
-                            //lblType.Text = drow["AccessLevel"].ToString();
-                            //Session["UAL"] = lblType.Text;
-                            //(string)Session["UAL"] = lblType.Text();
-                            //lblName.Text = drow["FirstName"].ToString() + ' ' + drow["LastName"].ToString();
-                            //lblposition.Text = "Team Leader";
-                            //Session["WDID"] = drow["WorkdayID"].ToString();
-                            //Session["FLN"] = drow["FirstName"].ToString() + ' ' + drow["LastName"].ToString();
+
+                            Session["errMSG"] = "Something Went Wrong";
+                            Response.Redirect("About.aspx");
 
 
                         }
-                        //TodoMgmt.Visible = false;
+                        else
+                        {
+                            DataSet ds = new DataSet();
+                            ds = _sbobj.getLoginDetails((string)Session["lanid"]);
+
+                            foreach (DataRow drow in ds.Tables[0].Rows)
+                            {
+                                Session["Type"] = drow["Type"].ToString();
+                                Session["lanid"] = drow["EID"].ToString();
+                                Response.Redirect("~/Default.aspx");
+
+
+                            }
+                        }
+
                     }
 
-                }
+                    else
+                    {
 
-                else
+                    }
+                }
+                catch (Exception)
                 {
-                    //lblEid.Text = "0";
-                    //lblName.Text = "Err";
+                    Response.Redirect("~/Default.aspx");
+                    throw;
                 }
             }
-            catch (Exception)
-            {
-                Response.Redirect("~/Default.aspx");
-                throw;
-            }
+
+        }
+
+        [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
+        public static string insertRegistration(List<string> _arr)
+        {
+            SBObj _sbobj = new SBObj();
+
+            _sbobj.EID = _arr[0].ToString();
+            _sbobj.Capability = _arr[1].ToString();
+            _sbobj.Project = _arr[2].ToString();
+
+            return _sbobj.InsertRegistration();
         }
 
     }
@@ -162,46 +177,46 @@ namespace DevOps
 
 /////OLD CODE COOKIES ON DOMAIN
 
-            //Session Checker
-            //if ((chkRememberMe.Checked == true))
-            //{
-            //    Response.Cookies["lanid"].Expires = DateTime.Now.AddHours(12);
-            //    Response.Cookies["pwd"].Expires = DateTime.Now.AddHours(12);
-            //}
-            //else
-            //{
-            //    Response.Cookies["lanid"].Expires = DateTime.Now.AddHours(-1);
-            //    Response.Cookies["pwd"].Expires = DateTime.Now.AddHours(-1);
-            //}
-            //Response.Cookies["lanid"].Expires = DateTime.Now.AddHours(-1);
-            //Response.Cookies["pwd"].Expires = DateTime.Now.AddHours(-1);
-            //Response.Cookies["lanid"].Value = txtUserName.Text.Trim();
-            //Response.Cookies["pwd"].Value = txtPassword.Text.Trim();
+//Session Checker
+//if ((chkRememberMe.Checked == true))
+//{
+//    Response.Cookies["lanid"].Expires = DateTime.Now.AddHours(12);
+//    Response.Cookies["pwd"].Expires = DateTime.Now.AddHours(12);
+//}
+//else
+//{
+//    Response.Cookies["lanid"].Expires = DateTime.Now.AddHours(-1);
+//    Response.Cookies["pwd"].Expires = DateTime.Now.AddHours(-1);
+//}
+//Response.Cookies["lanid"].Expires = DateTime.Now.AddHours(-1);
+//Response.Cookies["pwd"].Expires = DateTime.Now.AddHours(-1);
+//Response.Cookies["lanid"].Value = txtUserName.Text.Trim();
+//Response.Cookies["pwd"].Value = txtPassword.Text.Trim();
 
 
-            //string domainName = GetDomainName(txtUserName.Text);
-            //// Extract user name 
-            //string userName = GetUsername(txtUserName.Text);  
-            ////from provided DomainUsername e.g Domainname\Username
-            //IntPtr token = IntPtr.Zero;
-            //bool result = LogonUser(userName, domainName, txtPassword.Text, 2, 0, ref token);
-            //if (result)
-            //{
-            //    if (string.IsNullOrEmpty(Request.QueryString["ReturnUrl"]))
-            //    {
-            //        FormsAuthentication.RedirectFromLoginPage(txtUserName.Text, false);
-            //        Session["lanid"] = userName;
-            //        Response.Redirect("Default.aspx");
-                    
-            //    }
-            //    else
-            //    {
-            //        //FormsAuthentication.SetAuthCookie(txtUserName.Text, false);
-            //        //Response.Redirect("Success.aspx");
-            //        //Prompt cannot access / error or unauthorized account
-            //    }
-            //}
-            //else
-            //{
-            //    txtUserName.Focus();
-            //}
+//string domainName = GetDomainName(txtUserName.Text);
+//// Extract user name 
+//string userName = GetUsername(txtUserName.Text);  
+////from provided DomainUsername e.g Domainname\Username
+//IntPtr token = IntPtr.Zero;
+//bool result = LogonUser(userName, domainName, txtPassword.Text, 2, 0, ref token);
+//if (result)
+//{
+//    if (string.IsNullOrEmpty(Request.QueryString["ReturnUrl"]))
+//    {
+//        FormsAuthentication.RedirectFromLoginPage(txtUserName.Text, false);
+//        Session["lanid"] = userName;
+//        Response.Redirect("Default.aspx");
+
+//    }
+//    else
+//    {
+//        //FormsAuthentication.SetAuthCookie(txtUserName.Text, false);
+//        //Response.Redirect("Success.aspx");
+//        //Prompt cannot access / error or unauthorized account
+//    }
+//}
+//else
+//{
+//    txtUserName.Focus();
+//}

@@ -239,9 +239,12 @@
         })
 
         $('#date').datepicker({
-            //minDate: '-30', // The min date that can be selected, i.e. 30 days from the 'now' 
-            //   maxDate: '+1m +1w +1d' // The max date that can be selected, i.e. + 1 month, 1 week, and 1 days from 'now' 
-        });
+            calendarWeeks
+        })
+        //$('#date').datepicker({
+        //    //minDate: '-30', // The min date that can be selected, i.e. 30 days from the 'now' 
+        //    //   maxDate: '+1m +1w +1d' // The max date that can be selected, i.e. + 1 month, 1 week, and 1 days from 'now' 
+        //});
 
         $('#add').click(function () {
             AddActivity();

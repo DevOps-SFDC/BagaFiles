@@ -429,6 +429,50 @@ namespace DevOps.SystemObjects
 
             return msg;
         }
+
+        public DataTable LoadTop1()
+        {
+            DataTable dt = new DataTable();
+            var oParam = new SqlCommand().Parameters;
+            oParam.AddWithValue("@userno", _userno);
+            return dt = this.FGetDataTable(@"SBTop1", oParam);
+        }
+
+        public DataTable LoadTop2()
+        {
+            DataTable dt = new DataTable();
+            var oParam = new SqlCommand().Parameters;
+            oParam.AddWithValue("@userno", _userno);
+            return dt = this.FGetDataTable(@"SBTop2", oParam);
+        }
+
+        public DataTable LoadTop3()
+        {
+            DataTable dt = new DataTable();
+            var oParam = new SqlCommand().Parameters;
+            oParam.AddWithValue("@userno", _userno);
+            return dt = this.FGetDataTable(@"SBTop3", oParam);
+        }
+
+        public string InsertRegistration()
+        {
+            string msg;
+            var oParam = new SqlCommand().Parameters;
+            oParam.AddWithValue("@eid", _eid);
+            oParam.AddWithValue("@capability", _capability);
+            oParam.AddWithValue("@project", _project);
+            try
+            {
+                this.ExecuteInsert(@"TBInsertRegistration", oParam);
+                msg = "Updated!";
+            }
+            catch (Exception ex)
+            {
+                msg = ex.ToString();
+            }
+
+            return msg;
+        }
         #endregion
 
 

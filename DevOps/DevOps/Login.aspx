@@ -156,7 +156,9 @@
                     <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary btnLogin" Text="Sign In" OnClick="btnLogin_Click" OnClientClick="return validateCheck()" /><br />
                     </form>
                     <button id="btnRegisterHome" class="btn btn-info btnRegister">Register</button> 
-                    <a href="https://directory.accenture.com/ChangePassword/ManagedPC.aspx" class="btn btn-success btnForgot">Can&rsquo;t Remember Password</a>
+                    <br />
+                    <asp:Label ID="malingmensahe" runat="server"></asp:Label>
+                    <%--<a href="https://directory.accenture.com/ChangePassword/ManagedPC.aspx" class="btn btn-success btnForgot">Can&rsquo;t Remember Password</a>--%>
                 </div>
             </div>
 
@@ -183,7 +185,8 @@
                         </span>
                         <input type="text" id="PRO" class="form-control" placeholder="Project" />
                     </div>       
-                    <button id="REG" class="btn btn-primary btnRegister btnRegisterNow">Register</button><br /> 
+                        <button type="button" id="REG" class="btn btn-primary">Register</button><br />
+                    <%--<button id="REG" class="btn btn-primary btnRegister btnRegisterNow">Register</button><br /> --%>
                     <button id="GBC" class="btn btn-info btnGoBack"><i class="fa fa-arrow-circle-left"></i>&nbsp;&nbsp;&nbsp;Go Back</button><br /> 
                     </form>
                 </div>
@@ -204,11 +207,11 @@
 
             });
 
-            $('#btnGoBack').click(function () {
-                console.log('Hello');
-                $('.loginForm').hide();
-                $('.registerForm').css({ display: 'inline-block' }, "fast");
-            });
+            //$('#btnGoBack').click(function () {
+            //    console.log('Hello');
+            //    $('.loginForm').show();
+            //    $('.registerForm').css({ display: 'inline-block' }, "fast");
+            //});
         })
 
         function validateCheck() {
@@ -223,14 +226,44 @@
                 alert("Empty Password..");
                 valid = false;
             }
-
             return valid;
-            
-            
-         
         }
 
+
+        $('#REG').click(function () {
+            InsertRegistration();
+        })
      
+        function InsertRegistration() {
+            var arr = new Array();
+            arr[0] = $('#EID').val();
+            arr[1] = $('#CAP').val();
+            arr[2] = $('#PRO').val();
+            //arr[2] = '<%: Session["lanid"] %>'
+            $.ajax({
+                type: "POST",
+                url: "Login.aspx/insertRegistration",
+                data: JSON.stringify({ _arr: arr }),
+                contentType: "application/json; charset=utf-8",
+                dataTaype: "json",
+                success: AjaxSucceeded,
+                error: AjaxError,
+                failure: AjaxFailure
+            });
+
+            function AjaxSucceeded(response) {
+                //SUCESS SUCCESS
+                alert('You are now Registered!.. ');
+                $('.btnGoBack').click();
+
+            }
+            function AjaxError(response) {
+                //alert(response.status + ' ' + response.statusText);
+            }
+            function AjaxFailure(response) {
+                //alert(response.status + ' ' + response.statusText);
+            }
+        }
 
 
 

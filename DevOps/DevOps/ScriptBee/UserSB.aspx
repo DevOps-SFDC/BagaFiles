@@ -111,7 +111,7 @@
             <div class="col-xs-12" style="padding: 0px; box-shadow: rgba(0, 0, 0, 0.30) 0px 1px 1px; display:inline-block;">
                 <div class="col-md-12" style="background: rgba(44, 62, 80,1.0); color: #FFF; font-family: 'Open Sans',serif; padding-bottom: 15px; width: 100%">
                    <h1 style="display: inline-block"><i class="fa fa-pencil"></i> Online Quiz Bee</h1>
-                   <div class="qbbtn" style="float: right; margin-top: 15px; width: 90px; height: 50px; text-align: center">
+                   <div class="qbbtn" id="guestsubmitt" style="float: right; margin-top: 15px; width: 90px; height: 50px; text-align: center">
                      <button type="button" class="btn btn-success qbbtnsubmit" id="guestsubmit" style="height: 50px; width: 90px"><span class="qbbtnsubmittxt">Submit</span></button>
                    </div>
                 </div>
@@ -163,6 +163,45 @@
             <span id="ErrorDiv" class="Framework_Error_Message_Span"></span>
         </div>
 
+
+
+
+
+        <div class="modal fade" id="countdowntostart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+<%--                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
+                        <h2 class="modal-title" id="myModalLabel">GET READY !!</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <%--<input type="hidden" id="txtquestionid" />--%>
+                            <div class="col-lg-12">
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label style="font:large">Countdown</label><br />
+                                    <span id="countdowntimer" style="font-size: 36px">5</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+
+
+                    </div>
+
+                    <div class="modal-footer">
+<%--                        <button id="closemodal" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button id="btnupdate" type="button" class="btn btn-success" data-dismiss="modal">Update</button>--%>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
     <script type="text/javascript">
@@ -213,8 +252,17 @@
                     refreshquestionform();
                     setInterval(LoadQuestdummyid, 500);
                     setInterval(CheckdbAnswered, 500);
+
+                    
                 }
             })
+        }
+
+        function Showcountto3() {
+
+        }
+        function Hidecountot3() {
+
         }
 
         function CheckdbAnswered() {
@@ -236,9 +284,9 @@
             $('#guestanswer')[0].disabled = true;
         }
 
-        $('#guestsubmit').click(function () {
-     
-                CheckAnswer($('#questionid').val());
+        $('#guestsubmitt').click(function () {
+            //alert('1');
+            CheckAnswer($('#questionid').val());
         })
 
 
@@ -266,7 +314,8 @@
                     $('#points').val($(this).find("Point").text());
                     $('#guestsubmit')[0].disabled = false;
                     $('#guestanswer')[0].disabled = false;
-                    validatequestion();
+                    $('#countdowntostart').modal('show');
+                    countdownto3modal();
                 });
             }
             function AjaxError(response) {
@@ -309,6 +358,27 @@
             }
         }
 
+        function countdownto3modal() {
+            var secs = 5;
+
+            timer1 = setInterval(function () {
+
+                document.getElementById("countdowntimer").innerHTML = "  " + secs;
+                secs--;
+                if (secs == 00) {
+                    killInterval1();
+                    $('#countdowntostart').modal('hide');
+                    $('#countdowntimer').text('5');
+                    validatequestion();
+
+                }
+            }, 1000);
+        }
+        killInterval1 = function () {
+            clearInterval(timer1);
+
+        };
+
 
         function validatequestion() {
             if ($('#questionid').val() == 0) {
@@ -324,8 +394,6 @@
             var sec = 59;
 
                 timer = setInterval(function () {
-                    //var min = 2;
-                    //var sec = 59;
                     
                     document.getElementById("timer").innerHTML = "  " + min + ":" + sec;
                     sec--;
@@ -483,7 +551,7 @@
                 $('#errormes').text('');
             }
             function AjaxError(response) {
-                alert('Your Answer is not Correct');
+                //alert('Your Answer is not Correct');
                 //alert(response.status + ' ' + response.statusText);
             }
             function AjaxFailure(response) {
