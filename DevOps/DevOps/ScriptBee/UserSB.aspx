@@ -204,7 +204,7 @@
                     $('.qbbtnsubmit').remove();
                     $('.qbbtn').append('<button type="button" class="btn btn-success qbbtnsubmit" id="guestsubmit" style="height: 50px; width: 90px"><span class="qbbtnsubmittxt">Submit</span></button>');
                 });
-<%--                if ('<%: Session["UAL"]%>' == 'Administrator') {
+               if ('<%: Session["UAL"]%>' == 'Administrator') {
                     alert('You are not Authorized to use this Tool!..');
                     window.location.href = "/Default.aspx";
                 }
@@ -213,7 +213,7 @@
                     refreshquestionform();
                     setInterval(LoadQuestdummyid, 500);
                     setInterval(CheckdbAnswered, 500);
-                }--%>
+                }
             })
         }
 
