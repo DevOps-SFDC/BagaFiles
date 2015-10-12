@@ -295,6 +295,24 @@ namespace DevOps.SystemObjects
             return msg;
         }
 
+        public string RecycleUAA()
+        {
+            string msg;
+            var oParam = new SqlCommand().Parameters;
+            //oParam.AddWithValue("@questionid", _questionid);
+            try
+            {
+                this.ExecuteInsert(@"SBRecycleUAA", oParam);
+                msg = "Updated!";
+            }
+            catch (Exception ex)
+            {
+                msg = ex.ToString();
+            }
+
+            return msg;
+        }
+
         public string RecycleA()
         {
             string msg;
@@ -303,6 +321,24 @@ namespace DevOps.SystemObjects
             try
             {
                 this.ExecuteInsert(@"SBRecycleA", oParam);
+                msg = "Updated!";
+            }
+            catch (Exception ex)
+            {
+                msg = ex.ToString();
+            }
+
+            return msg;
+        }
+
+        public string RecycleAA()
+        {
+            string msg;
+            var oParam = new SqlCommand().Parameters;
+            //oParam.AddWithValue("@questionid", _questionid);
+            try
+            {
+                this.ExecuteInsert(@"SBRecycleAA", oParam);
                 msg = "Updated!";
             }
             catch (Exception ex)

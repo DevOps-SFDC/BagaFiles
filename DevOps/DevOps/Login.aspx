@@ -99,17 +99,31 @@
             text-align: center;
         }
 
-        .btnForgot, .btnLogin {
+        .btnForgot, .btnLogin, .btnRegister {
             margin-top: 10px;
             width: 220px;
             transition: all 0.2s ease-in-out;
         }
 
-        .btnForgot:hover, .btnLogin:hover {
+        .btnForgot:hover, .btnLogin:hover, .btnRegister:hover {
             color: #000;
             background: rgba(0, 0, 0, 0);
-            border: 2px solid rgba(0, 0, 0, 1);
+            border: 1px solid rgba(0, 0, 0, 1);
             font-weight: 500;
+        }
+
+        .btnGoBack {
+            background: rgba(255, 255, 255, 0);
+            border: 0px;
+            color: #000;
+            font-size: 15px;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .btnGoBack:hover {
+            background: rgba(255, 255, 255, 0);
+            border: 0px;
+            color: rgba(150, 40, 27, 1);
         }
     </style>
     <link href="~/bootstrap/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet" />
@@ -122,14 +136,12 @@
         <div class="loginHeadWrapper">
             <img src="Images/BOB.png" style="height: 60px; width: 60px" />
             <span class="loginTitle">
-                DevOps Battle of the Brains ABABABA
+                DevOps Battle of the Brains
             </span>
         </div>
         <div class="loginBodyWrapper" style="vertical-align: central">
 
-
-
-            <div class="loginFormContainer" style="display: inline-block">
+            <div class="loginFormContainer loginForm" style="display: inline-block" hidden="hidden">
                 <div class="loginFormHeader">
                     <span> <img src="Images/BOB.png" style="height: 40px; width: 40px" /> Sign in to Your Account</span>
                     <hr style="color: #000; margin-top: 5px; margin-bottom: 22px" />
@@ -140,13 +152,39 @@
                         </span>
                         <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control" placeholder="Enterprise ID" ClientIDMode="Static" />
                     </div>
-<%--                    <div class="input-group" style="margin-bottom: 10px">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Password" ClientIDMode="Static"  />
-                    </div>  --%>          
-                    <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary btnLogin" Text="Sign In" OnClick="btnLogin_Click" OnClientClick="return validateCheck()" /><br /> 
-                    <asp:Button ID="btnForgot" runat="server" CssClass="btn btn-info btnForgot" Text="Can&rsquo;t Remember Password" OnClick="btnForgot_Click" />
-                    <asp:Button ID="btnRegister" runat="server" CssClass="btn btn-info btnForgot" Text="Register Now" OnClick="btnRegister_Click" />
+       
+                    <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary btnLogin" Text="Sign In" OnClick="btnLogin_Click" OnClientClick="return validateCheck()" /><br />
+                    </form>
+                    <button id="btnRegisterHome" class="btn btn-info btnRegister">Register</button> 
+                    <a href="https://directory.accenture.com/ChangePassword/ManagedPC.aspx" class="btn btn-success btnForgot">Can&rsquo;t Remember Password</a>
+                </div>
+            </div>
+
+            <div class="loginFormContainer registerForm" style="display: none">
+                <div class="loginFormHeader">
+                    <span> <img src="Images/BOB.png" style="height: 40px; width: 40px" /> Sign in to Your Account</span>
+                    <hr style="color: #000; margin-top: 5px; margin-bottom: 22px" />
+                    <form id="Form1" class="navbar-form navbar-right" role="form" style="padding-left: 5px">
+                    <div class="input-group" style="margin-bottom: 10px">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input type="text" id="EID" class="form-control" placeholder="Enterprise ID" />
+                    </div>
+                    <div class="input-group" style="margin-bottom: 10px">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input type="text" id="CAP" class="form-control" placeholder="Capability" />
+                    </div>
+                    <div class="input-group" style="margin-bottom: 10px">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input type="text" id="PRO" class="form-control" placeholder="Project" />
+                    </div>       
+                    <button id="REG" class="btn btn-primary btnRegister btnRegisterNow">Register</button><br /> 
+                    <button id="GBC" class="btn btn-info btnGoBack"><i class="fa fa-arrow-circle-left"></i>&nbsp;&nbsp;&nbsp;Go Back</button><br /> 
                     </form>
                 </div>
             </div>
@@ -156,26 +194,22 @@
         </div>
     </div>
 
-    <%--<script type="text/javascript">
-        var prm = new Sys.WebForms.PageRequestManager.getInstance();
-        prm.add_initializeRequest(initializer);
-        prm.add_endRequest(ender);
-        prm.add_pageLoaded(loader);
+    <script src="Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+       
+        $(document).ready(function () {
+            $('#btnRegisterHome').click(function () {
+                $('.loginForm').hide();
+                $('.registerForm').css({ display: 'inline-block' }, "fast");
 
-        function initializer(sender, args) {
+            });
 
-        }
-
-        function ender(sender, args) {
-
-        }
-
-        function loader(sender, args) {
-            $(document).ready(function () {
-                
-            })
-        }
-
+            $('#btnGoBack').click(function () {
+                console.log('Hello');
+                $('.loginForm').hide();
+                $('.registerForm').css({ display: 'inline-block' }, "fast");
+            });
+        })
 
         function validateCheck() {
             var valid = true;
@@ -200,7 +234,7 @@
 
 
 
-    </script>--%>
+    </script>
 
 </body>
 

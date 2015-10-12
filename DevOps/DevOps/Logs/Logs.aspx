@@ -97,9 +97,9 @@
                                             </table>
                                         </div>
 
-                                        <div class="pull-right" style="padding-top: 5px">
+ <%--                                       <div class="pull-right" style="padding-top: 5px">
                                             <button id="addquest" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw"></i>Add New Question</button>
-                                        </div>
+                                        </div>--%>
                                         <div class="clearfix"></div>
 
 
@@ -219,7 +219,7 @@
                                             </table>
                                         </div>
                                         <div class="pull-right" style="padding-top: 5px">
-                                            <button id="reuseu" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw"></i>Recycle All Questions</button>
+                                            <button id="reuseu" type="button" class="btn btn-success"><i class="glyphicon glyphicon-refresh"></i> Recycle All Questions</button>
                                         </div>
                                     </div>
 
@@ -296,7 +296,7 @@
                                         </div>
 
                                         <div class="pull-right" style="padding-top: 5px">
-                                            <button id="reusea" type="button" class="btn btn-success"><i class="fa fa-plus fa-fw"></i>Recycle All Questions</button>
+                                            <button id="reusea" type="button" class="btn btn-success"><i class="glyphicon glyphicon-refresh"></i> Recycle All Questions</button>
                                         </div>
                                         <div class="modal fade" id="reuseA" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -416,6 +416,12 @@
         })
         $('#btnreuseA').click(function () {
             RecycleA();
+        })
+        $('#reuseu').click(function () {
+            RecycleUAA();
+        })
+        $('#reusea').click(function () {
+            RecycleAA();
         })
 
 
@@ -716,6 +722,65 @@
             }
         }
 
+        function RecycleUAA() {
+            var arr = new Array();
+            //arr[0] = $('#txtquestionidua').val();
+            //arr[1] = $('#txtquestionua').val();
+            //arr[2] = $('#txtanswerua').val();
+            //arr[3] = $('#txtdifficultyua').val();
+
+            $.ajax({
+                type: "POST",
+                url: "Logs.aspx/recycleUAA",
+                data: JSON.stringify({ _arr: arr }),
+                contentType: "application/json; charset=utf-8",
+                dataTaype: "json",
+                success: AjaxSucceeded,
+                error: AjaxError,
+                failure: AjaxFailure
+            });
+
+            function AjaxSucceeded(response) {
+                DisplayUnansweredQuestionaires();
+                alert('All Questions are Recycled! ');
+            }
+            function AjaxError(response) {
+                alert(response.status + ' ' + response.statusText);
+            }
+            function AjaxFailure(response) {
+                alert(response.status + ' ' + response.statusText);
+            }
+        }
+
+        function RecycleAA() {
+            var arr = new Array();
+            //arr[0] = $('#txtquestionida').val();
+            //arr[1] = $('#txtquestionua').val();
+            //arr[2] = $('#txtanswerua').val();
+            //arr[3] = $('#txtdifficultyua').val();
+
+            $.ajax({
+                type: "POST",
+                url: "Logs.aspx/recycleAA",
+                data: JSON.stringify({ _arr: arr }),
+                contentType: "application/json; charset=utf-8",
+                dataTaype: "json",
+                success: AjaxSucceeded,
+                error: AjaxError,
+                failure: AjaxFailure
+            });
+
+            function AjaxSucceeded(response) {
+                DisplayAnsweredQuestionaires();
+                alert('All Questions are Recycled! ');
+            }
+            function AjaxError(response) {
+                alert(response.status + ' ' + response.statusText);
+            }
+            function AjaxFailure(response) {
+                alert(response.status + ' ' + response.statusText);
+            }
+        }
     </script>
 
 </asp:Content>

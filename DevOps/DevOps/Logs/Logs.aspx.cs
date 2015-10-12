@@ -120,6 +120,25 @@ namespace DevOps.Logs
             return _sbobj.RecycleA();
         }
 
+        [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
+        public static string recycleUAA(List<string> _arr)
+        {
+            SBObj _sbobj = new SBObj();
+
+            //_sbobj.QuestionID = Convert.ToInt32(_arr[0].ToString());
+
+            return _sbobj.RecycleUAA();
+        }
+
+        [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
+        public static string recycleAA(List<string> _arr)
+        {
+            SBObj _sbobj = new SBObj();
+
+            //_sbobj.QuestionID = Convert.ToInt32(_arr[0].ToString());
+
+            return _sbobj.RecycleAA();
+        }
 
     }
 }
