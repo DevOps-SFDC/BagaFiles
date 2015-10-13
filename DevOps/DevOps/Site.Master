@@ -104,7 +104,7 @@
         
         <script src="<%: ResolveUrl("~/Scripts/jquery.scrollTo.min.js") %>"></script>
         <script src="<%: ResolveUrl("~/Scripts/spin.js") %>"></script>
-        <%--<script src="<%: ResolveUrl("~/Scripts/moment.min.js") %>"></script>--%>
+        <script src="<%: ResolveUrl("~/Scripts/moment.min.js") %>"></script>
         
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -125,7 +125,7 @@
         </asp:ScriptManager>
         <div id="wrapper">
             
-            <nav class="navbar navbar-default1 navbar-static-top" role="navigation" style="margin-bottom: 0; position: fixed; width: 100%" >
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; position: fixed; width: 100%" >
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -140,7 +140,7 @@
                 </div>
                 <!-- /.navbar-header -->
 
-                <div class="navbar-default1 sidebar" role="navigation" style="box-shadow: rgba(0, 0, 0, 0.40) 1px 0px 2px; height: 100%; background: #2C3E50; position:fixed">
+                <div class="navbar-default sidebar" role="navigation" style="box-shadow: rgba(0, 0, 0, 0.40) 1px 0px 2px; height: 100%; background: #2C3E50; position:fixed">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu" style="background: rgba(44, 62, 80,1.0); color: #FFF ">
                             <li class="sidebar-search" style="text-align: center">
@@ -170,10 +170,10 @@
                                         <a href="#" style="color: #FFF"><i class="fa fa-calendar fa-fw"></i>Questionaires<span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="<%: ResolveUrl("~/Questionaire/Questionaire.aspx") %>" style="color: #FFF"><i class="fa fa-clock-o fa-fw"></i>Add Questionaire</a>
+                                                <a href="<%: ResolveUrl("~/Questionaire/Questionaire.aspx") %>" style="color: #FFF"><i class="fa fa-clock-o fa-fw"></i> Add Questionaire</a>
                                             </li>
                                             <li>
-                                                <a href="<%: ResolveUrl("~/Logs/Logs.aspx") %>" style="color: #FFF"><i class="fa fa-list fa-fw"></i>Question Logs</a>
+                                                <a href="<%: ResolveUrl("~/Logs/Logs.aspx") %>" style="color: #FFF"><i class="fa fa-list fa-fw"></i> Question Logs</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -184,6 +184,18 @@
                              </li>
                             <li class="scriptBee" id="BattleoftheBrains" style="display:none;">
                                 <a href="<%: ResolveUrl("~/ScriptBee/UserSB.aspx") %>" style="color: #FFF"><i class="fa fa-puzzle-piece fa-fw"></i> Quiz Bee</a>
+                            </li>
+                            <li class="aboutpanel">
+                                
+                                <a id="A1" runat="server" href="#" style="color: #FFF;"><i class=" glyphicon glyphicon-expand"></i> About<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="<%: ResolveUrl("~/About/CalendarActivity.aspx") %>" style="color: #FFF"><i class="glyphicon glyphicon-calendar"></i> Calendar Activity</a>
+                                    </li>
+                                    <li>
+                                        <a href="<%: ResolveUrl("https://www.accenture.com/t20150523T022807__w__/ph-en/_acnmedia/Accenture/Conversion-Assets/DotCom/Documents/Global/PDF/Dualpub_10/Accenture-DevOps-Services-Overview.pdf") %>" style="color: #FFF"><i class="glyphicon glyphicon-book"></i> Facts About DevOps</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -230,7 +242,8 @@
             if ('<%: Session["Type"]%>' == 'User') {
                 $('#AdminPanel').hide();
                 $('#QuestionLauncher').hide();
-                $('#BattleoftheBrains').show()
+                //$('#BattleoftheBrains').show()
+                window.location.href = "/About/CalendarActivity.aspx";
             }
             else if ('<%: Session["Type"]%>' == 'Administrator') {
                 $('#AdminPanel').show();

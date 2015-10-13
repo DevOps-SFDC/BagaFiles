@@ -103,7 +103,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
+    <Content Include="About\CalendarActivity.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
@@ -238,6 +238,9 @@
     <Content Include="Images\BOB.png" />
     <Content Include="Images\building.jpg" />
     <Content Include="Images\bullet.png" />
+    <Content Include="Images\carouselimages\image1.jpg" />
+    <Content Include="Images\carouselimages\image2.jpg" />
+    <Content Include="Images\carouselimages\image3.jpg" />
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\icon1.png" />
     <Content Include="Images\orderedList0.png" />
@@ -353,6 +356,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About\CalendarActivity.aspx.cs">
+      <DependentUpon>CalendarActivity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About\CalendarActivity.aspx.designer.cs">
+      <DependentUpon>CalendarActivity.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminPanel\Activitymgmt.aspx.cs">
       <DependentUpon>Activitymgmt.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -375,13 +385,6 @@
       <DependentUpon>Questionaires.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\AuthConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -46,7 +46,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Title :</label>
-                        <textarea id="title" cols="100" rows="3" placeholder="Activity Title.." class="form-control"></textarea>
+                        <input type="text" id="title" class="form-control" placeholder="Decription of you Activity.." />
+                        <%--<textarea id="title" cols="100" rows="3" placeholder="Activity Title.." class="form-control"></textarea>--%>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -57,7 +58,8 @@
                 <div class="col-xs-3">
                     <div class="form-group">
                         <label>Description :</label>
-                        <input type="text" id="description" class="form-control" placeholder="Decription of you Activity.." />
+                        <textarea id="description" cols="100" rows="3" placeholder="Activity Title.." class="form-control"></textarea>
+                        <%--<input type="text" id="description" class="form-control" placeholder="Decription of you Activity.." />--%>
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -221,6 +223,26 @@
              })
         }
 
+
+        function validateactivityform() {
+            if ($('#title').val() == ''){
+                alert('Empty Title!..');
+                $('#title').focus();
+            }
+            else if ($('#description').val() == ''){
+                alert('Empty Description!..');
+                $('#description').focus();
+            }
+            else if ($('#date').val() == '') {
+                alert('Empty Date!..');
+                $('#date').focus();
+            }
+            else {
+                AddActivity();
+            }
+    
+        }
+
         function refreshform() {
             $('#title').val('');
             $('#description').val('');
@@ -238,16 +260,14 @@
             refreshform();
         })
 
+
         $('#date').datepicker({
-            calendarWeeks
-        })
-        //$('#date').datepicker({
-        //    //minDate: '-30', // The min date that can be selected, i.e. 30 days from the 'now' 
-        //    //   maxDate: '+1m +1w +1d' // The max date that can be selected, i.e. + 1 month, 1 week, and 1 days from 'now' 
-        //});
+            //minDate: '-30', // The min date that can be selected, i.e. 30 days from the 'now' 
+            //   maxDate: '+1m +1w +1d' // The max date that can be selected, i.e. + 1 month, 1 week, and 1 days from 'now' 
+        });
 
         $('#add').click(function () {
-            AddActivity();
+            validateactivityform();
         })
 
 
@@ -277,8 +297,7 @@
 
                         col += $(this).find("Title").text() + '</td> <td>';
                         col += $(this).find("Description").text() + '</td> <td>';
-                        col += $(this).find("Date").text() + '</td> <td>';
-                        //col += moment($(this).find("Date").text()).utcOffset(480).format('MM/DD/YYYY') + '</td> <td>';
+                        col += moment($(this).find("Date").text()).utcOffset(480).format('MMMM/DD/YYYY') + '</td> <td>';
 
                         col += '<input id="questionid" type="hidden" value="' + $(this).find("ActivityID").text() + '"/> <a id="makeadmin" class="makeadmin" data-toggle="modal" data-target="#madmin" href="#"><i class="glyphicon glyphicon-chevron-up"></i> Edit</a> <br /> <a id="makeuser" class="makeuser" data-toggle="modal" data-target="#muser" href="#"><i class="glyphicon glyphicon-chevron-down"></i> Delete</a> </td>';
 
