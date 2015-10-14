@@ -119,11 +119,11 @@ namespace DevOps
 
                         DataTable dt = new DataTable();
                         dt = _sbobj.getLoginDetails((string)Session["lanid"]).Tables[0];
-                        if (dt.Rows.Count < 1)
+                        if (dt.Rows.Count == 0)
                         {
 
                             Session["errMSG"] = "Something Went Wrong";
-                            Response.Redirect("About.aspx");
+                            Response.Redirect("~/Login.aspx");
 
 
                         }
@@ -151,8 +151,10 @@ namespace DevOps
                 }
                 catch (Exception)
                 {
-                    Response.Redirect("~/Default.aspx");
-                    throw;
+                    //Response.Redirect("~/Login.aspx");
+                    //malingmensahe.ForeColor = System.Drawing.Color.Red;
+                    //malingmensahe.Text = "Invalid EID";
+                    //throw;
                 }
             }
 

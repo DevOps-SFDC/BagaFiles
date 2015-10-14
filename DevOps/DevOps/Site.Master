@@ -242,8 +242,8 @@
             if ('<%: Session["Type"]%>' == 'User') {
                 $('#AdminPanel').hide();
                 $('#QuestionLauncher').hide();
-                //$('#BattleoftheBrains').show()
-                window.location.href = "/About/CalendarActivity.aspx";
+                $('#BattleoftheBrains').show()
+                //window.location.href = "/About/CalendarActivity.aspx";
             }
             else if ('<%: Session["Type"]%>' == 'Administrator') {
                 $('#AdminPanel').show();

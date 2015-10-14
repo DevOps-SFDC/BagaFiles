@@ -14,7 +14,7 @@ namespace DevOps.SystemObjects
 
 
         #region Declaration
-        private string _question, _answer, _difficulty, _status, _eid, _guestanswer, _capability, _project, _type, _title, _description;
+        private string _question, _answer, _difficulty, _status, _eid, _guestanswer, _capability, _project, _type, _title, _description, _message;
         private int _questionid, _userno;
         private DateTime? _date;
         #endregion
@@ -51,6 +51,8 @@ namespace DevOps.SystemObjects
         { set { _title = value; } }
         public String Description
         { set { _description = value; } }
+        public String Message
+        { set { _message = value; } }
         #endregion
 
         #region DATE
@@ -464,6 +466,32 @@ namespace DevOps.SystemObjects
             try
             {
                 this.ExecuteInsert(@"TBInsertRegistration", oParam);
+                msg = "Updated!";
+            }
+            catch (Exception ex)
+            {
+                msg = ex.ToString();
+            }
+
+            return msg;
+        }
+
+        public DataTable DisplayChat()
+        {
+            DataTable dt = new DataTable();
+            var oParam = new SqlCommand().Parameters;
+            return dt = this.FGetDataTable(@"SBGetChat", oParam);
+        }
+
+        public string InsertChat()
+        {
+            string msg;
+            var oParam = new SqlCommand().Parameters;
+            oParam.AddWithValue("@eid", _eid);
+            oParam.AddWithValue("@message", _message);
+            try
+            {
+                this.ExecuteInsert(@"SBInsertChat", oParam);
                 msg = "Updated!";
             }
             catch (Exception ex)
