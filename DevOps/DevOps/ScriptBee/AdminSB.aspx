@@ -176,11 +176,11 @@
         function loader(sender, args) {
             $(document).ready(function () {
 
-                if ('<%: Session["UAL"]%>' == 'User') {
+                if ('<%: Session["Type"]%>' == 'User') {
                     alert('You are not Authorized to use this Tool!..');
                     window.location.href = "/Default.aspx";
                 }
-                else if ('<%: Session["UAL"]%>' == 'Administrator'); {
+                else if ('<%: Session["Type"]%>' == 'Administrator'); {
                     $('#questionid').val(0);
                     DisplayQuestionaires();
                     refreshquestionform()
@@ -289,13 +289,18 @@
             });
 
             function AjaxSucceeded(response) {
-                GetActiveQuestion($('#txtquestionid').val());
+                if ($('#questionid').val() == 0) {
+                    GetActiveQuestion($('#txtquestionid').val());
+                }
+                else {
+                    alert('You already load a Question!..');
+                }
             }
             function AjaxError(response) {
-                alert(response.status + ' ' + response.statusText);
+                //alert(response.status + ' ' + response.statusText);
             }
             function AjaxFailure(response) {
-                alert(response.status + ' ' + response.statusText);
+                //alert(response.status + ' ' + response.statusText);
             }
         }
 

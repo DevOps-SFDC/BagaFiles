@@ -243,11 +243,11 @@
                     $('.qbbtnsubmit').remove();
                     $('.qbbtn').append('<button type="button" class="btn btn-success qbbtnsubmit" id="guestsubmit" style="height: 50px; width: 90px"><span class="qbbtnsubmittxt">Submit</span></button>');
                 });
-               if ('<%: Session["UAL"]%>' == 'Administrator') {
+               if ('<%: Session["Type"]%>' == 'Administrator') {
                     alert('You are not Authorized to use this Tool!..');
                     window.location.href = "/Default.aspx";
                 }
-                else if ('<%: Session["UAL"]%>' == 'User'); {
+                else if ('<%: Session["Type"]%>' == 'User'); {
                     $('#questionid').val(0);
                     refreshquestionform();
                     setInterval(LoadQuestdummyid, 500);
@@ -307,15 +307,16 @@
                 var xml = $(xmlDoc);
                 var exkeys = xml.find("Table1");
                 $.each(exkeys, function () {
-
+                    $('#countdowntostart').modal('show');
+                    countdownto3modal();
                     $('#questionid').val($(this).find("QuestionID").text());
                     $('#question').val($(this).find("Question").text());
                     $('#difficulty').val($(this).find("Difficulty").text());
                     $('#points').val($(this).find("Point").text());
                     $('#guestsubmit')[0].disabled = false;
                     $('#guestanswer')[0].disabled = false;
-                    $('#countdowntostart').modal('show');
-                    countdownto3modal();
+
+
                 });
             }
             function AjaxError(response) {

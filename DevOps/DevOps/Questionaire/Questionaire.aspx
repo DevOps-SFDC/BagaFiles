@@ -228,11 +228,11 @@
         }
         function loader(sender, args) {
             $(document).ready(function () {
-                if ('<%: Session["UAL"]%>' == 'User') {
+                if ('<%: Session["Type"]%>' == 'User') {
                     alert('You are not Authorized to use this Tool!..');
                     window.location.href = "/Default.aspx";
                 }
-                else if ('<%: Session["UAL"]%>' == 'Administrator'); {
+                else if ('<%: Session["Type"]%>' == 'Administrator'); {
                     DisplayQuestionaires();
                 }
             })

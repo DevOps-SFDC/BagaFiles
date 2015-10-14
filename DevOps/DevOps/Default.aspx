@@ -210,7 +210,7 @@
         function loader(sender, args) {
             $(document).ready(function () {
                 LoadTopScorers();
-                DisplayChat();
+                //DisplayChat();
             })
         }
 
