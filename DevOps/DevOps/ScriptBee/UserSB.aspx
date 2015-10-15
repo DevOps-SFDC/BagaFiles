@@ -343,7 +343,7 @@
                $.each(exkeys, function () {
 
                    //alert($(this).find("EID").text());
-                   if ($(this).find("EID").text('<%: Session["lanid"]%>')) {
+                   if ($(this).find("EID").text() == '<%: Session["lanid"]%>') {
                        //alert('1');
                        clearnotifmodal();
                        $('#questionid').val(0);
@@ -414,7 +414,7 @@
 
 
                 }
-            }, 100);
+            }, 1000);
         }
         function killInterval() {
             clearInterval(timer);
