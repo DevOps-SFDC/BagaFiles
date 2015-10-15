@@ -70,12 +70,44 @@ namespace DevOps.ScriptBee
             return ds.GetXml();
         }
 
+
+
+        //[System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
+        //public static string checkAnswer(Int32 questid)
+        //{
+        //    SBObj _sbobj = new SBObj();
+        //    _sbobj.QuestionID = questid;
+        //    DataSet ds = new DataSet();
+        //    try
+        //    {
+        //        ds.Tables.Add(_sbobj.CheckAnswer());
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //    }
+        //    return ds.GetXml();
+        //}
+
+        //[System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
+        //public static string checkAnswer(List<string> _arr)
+        //{
+        //    SBObj _sbobj = new SBObj();
+
+        //    _sbobj.QuestionID = Convert.ToInt32(_arr[0].ToString());
+        //    _sbobj.GuestAnswer = _arr[1].ToString();
+        //    return _sbobj.CheckAnswer();
+        //}
+
+
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
-        public static string checkAnswer(Int32 questid)
+        public static string checkAnswer(List<string> _arr)
         {
-            SBObj _sbobj = new SBObj();
-            _sbobj.QuestionID = questid;
             DataSet ds = new DataSet();
+            SystemObjects.SBObj _sbobj = new SystemObjects.SBObj();
+
+            _sbobj.QuestionID = Convert.ToInt32(_arr[0].ToString());
+            _sbobj.GuestAnswer = _arr[1].ToString();
             try
             {
                 ds.Tables.Add(_sbobj.CheckAnswer());
@@ -86,6 +118,7 @@ namespace DevOps.ScriptBee
             }
             return ds.GetXml();
         }
+
 
 
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]

@@ -246,8 +246,28 @@ namespace DevOps.SystemObjects
             DataTable dt = new DataTable();
             var oParam = new SqlCommand().Parameters;
             oParam.AddWithValue("@questionid", _questionid);
-            return dt = this.FGetDataTable(@"SBDisplayQuestionInfo", oParam);
+            oParam.AddWithValue("@guestanswer", _guestanswer);
+            return dt = this.FGetDataTable(@"SBCheckAnswer", oParam);
         }
+        //public string CheckAnswer()
+        //{
+        //    string msg;
+        //    var oParam = new SqlCommand().Parameters;
+        //    oParam.AddWithValue("@questionid", _questionid);
+        //    oParam.AddWithValue("@guestanswer", _guestanswer);
+        //    try
+        //    {
+        //        this.ExecuteInsert(@"SBCheckAnswer", oParam);
+        //        msg = "Updated!";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        msg = ex.ToString();
+        //    }
+
+        //    return msg;
+        //}
+
 
 
         public string UpdateCorrect()

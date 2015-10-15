@@ -29,6 +29,8 @@ namespace DevOps
             txtUserName.Focus();
             if (!IsPostBack)
             {
+
+
                 //if (Request.Cookies["lanid"] != null)
                 //    txtUserName.Text = Request.Cookies["lanid"].Value;
                 ////if (Request.Cookies["pwd"] != null)
@@ -102,6 +104,7 @@ namespace DevOps
         {
 
             SBObj _sbobj = new SBObj();
+
             Session["errMSG"] = "";
             Session["lanid"] = txtUserName.Text;
             if (txtUserName.Text == "")
@@ -137,6 +140,8 @@ namespace DevOps
                                 Session["Type"] = drow["Type"].ToString();
                                 Session["lanid"] = drow["EID"].ToString();
                                 Response.Redirect("~/Default.aspx");
+                                Response.Cookies["lanid"].Expires = DateTime.Now.AddHours(1);
+                                //Response.Cookies["lanid"].Value = txtUserName.Text.Trim();
 
 
                             }

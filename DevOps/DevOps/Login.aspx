@@ -199,20 +199,26 @@
 
     <script src="Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
     <script type="text/javascript">
+
+
+           $(document).ready(function () {
+
+               $('#btnRegisterHome').click(function () {
+                   $('.loginForm').hide();
+                   $('.registerForm').css({ display: 'inline-block' }, "fast");
+
+               });
+
+
+
+               //$('#btnGoBack').click(function () {
+               //    console.log('Hello');
+               //    $('.loginForm').show();
+               //    $('.registerForm').css({ display: 'inline-block' }, "fast");
+               //});
+           })
        
-        $(document).ready(function () {
-            $('#btnRegisterHome').click(function () {
-                $('.loginForm').hide();
-                $('.registerForm').css({ display: 'inline-block' }, "fast");
 
-            });
-
-            //$('#btnGoBack').click(function () {
-            //    console.log('Hello');
-            //    $('.loginForm').show();
-            //    $('.registerForm').css({ display: 'inline-block' }, "fast");
-            //});
-        })
 
         function validateCheck() {
             var valid = true;
@@ -231,7 +237,14 @@
 
 
         $('#REG').click(function () {
-            InsertRegistration();
+            if ($('#EID').val() == '') {
+                alert('Please Insert Your Enterprise ID!..');
+                $('#EID').focus();
+            }
+            else {
+                InsertRegistration();
+            }
+
         })
      
         function InsertRegistration() {
